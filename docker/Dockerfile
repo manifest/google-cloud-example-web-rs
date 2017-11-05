@@ -1,16 +1,14 @@
-ARG BUILDSTAGE_IMAGE
-
 ## -----------------------------------------------------------------------------
 ## Build
 ## -----------------------------------------------------------------------------
-FROM ${BUILDSTAGE_IMAGE} as build-stage
+FROM rust:latest as build-stage
 
 ARG PROJECT
 ARG BUILD_DIR
 ENV BUILD_DIR=${BUILD_DIR:-"/build"}
 
 WORKDIR "${BUILD_DIR}"
-COPY src "./src"
+COPY . "./"
 RUN cargo build --release
 
 ## -----------------------------------------------------------------------------
