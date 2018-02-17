@@ -25,10 +25,10 @@ $ curl -fsSL http://$(docker-machine ip):8080
 3. On Google Cloud using Container Engine:
 
 ```bash
-## Create Docker container called 'sandbox/google-cloud-example-web'
+## Create Docker container called 'manifesthub/google-cloud-example-web'
 ## and upload it to Container Registry
-./docker/package.sh
-docker tag sandbox/google-cloud-example-web gcr.io/example-project/google-cloud-example-web
+docker build -t manifesthub/google-cloud-example-web -f ./docker/Dockerfile .
+docker tag manifesthub/google-cloud-example-web gcr.io/example-project/google-cloud-example-web
 gcloud docker -- push gcr.io/example-project/google-cloud-example-web
 
 ## Create cluster, deployment, expose application to load balancer

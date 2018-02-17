@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: google-cloud-example-web
+  labels:
+    app: google-cloud-example-web
+spec:
+  replicas: 1
+  selector:
+      matchLabels:
+        app: google-cloud-example-web
+  template:
+    metadata:
+      labels:
+        app: google-cloud-example-web
+    spec:
+      containers:
+      - name: google-cloud-example-web
+        image: manifesthub/google-cloud-example-web-rs:latest
+        ports:
+        - containerPort: 8080
+        resources:
+          requests:
+            cpu: 100m
+            memory: 200Mi
+          limits:
+            cpu: 500m
+            memory: 1Gi
